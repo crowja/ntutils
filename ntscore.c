@@ -1,15 +1,9 @@
-#include <ctype.h>
 #include "ntscore.h"
 
 double
 ntscore(char b1, char b2, double penalty)
 {
    double      s;
-
-   if (b1 == 'U' || b1 == 'u')
-      b1 = 'T';
-   if (b2 == 'U' || b2 == 'u')
-      b2 = 'T';
 
    switch (b1) {
       case 'A':
@@ -29,6 +23,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (0 - 1 * penalty) / (double) 1;
                break;
             case 'R':
@@ -94,6 +90,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (0 - 1 * penalty) / (double) 1;
                break;
             case 'R':
@@ -159,6 +157,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (0 - 1 * penalty) / (double) 1;
                break;
             case 'R':
@@ -209,6 +209,8 @@ ntscore(char b1, char b2, double penalty)
          }
       case 'T':
       case 't':
+      case 'U':
+      case 'u':
          switch (b2) {
             case 'A':
             case 'a':
@@ -224,6 +226,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 0 * penalty) / (double) 1;
                break;
             case 'R':
@@ -289,6 +293,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (0 - 2 * penalty) / (double) 2;
                break;
             case 'R':
@@ -354,6 +360,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 1 * penalty) / (double) 2;
                break;
             case 'R':
@@ -419,6 +427,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (0 - 2 * penalty) / (double) 2;
                break;
             case 'R':
@@ -484,6 +494,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 1 * penalty) / (double) 2;
                break;
             case 'R':
@@ -549,6 +561,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 1 * penalty) / (double) 2;
                break;
             case 'R':
@@ -614,6 +628,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (0 - 2 * penalty) / (double) 2;
                break;
             case 'R':
@@ -679,6 +695,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 2 * penalty) / (double) 3;
                break;
             case 'R':
@@ -744,6 +762,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (0 - 3 * penalty) / (double) 3;
                break;
             case 'R':
@@ -809,6 +829,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 2 * penalty) / (double) 3;
                break;
             case 'R':
@@ -874,6 +896,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 2 * penalty) / (double) 3;
                break;
             case 'R':
@@ -940,6 +964,8 @@ ntscore(char b1, char b2, double penalty)
                break;
             case 'T':
             case 't':
+            case 'U':
+            case 'u':
                s = (1 - 3 * penalty) / (double) 4;
                break;
             case 'R':
