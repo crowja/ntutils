@@ -20,7 +20,7 @@ INDENT_FLAGS = -TFILE -Tsize_t -Tuint8_t
 TESTS = t/test-revcomp
 EXAMPLES = ex/ex_1
 
-check: test-revcomp test-tidy
+check: test-revcomp test-tidy test-score
 
 test-revcomp:
 	( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
@@ -30,6 +30,11 @@ test-revcomp:
 test-tidy:
 	( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
 	  -o t/a.out-$@ t/$@.c nttidy.c $(LDFLAGS) ) \
+	  && ( $(VALGRIND) t/a.out-$@ );
+
+test-score:
+	( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+	  -o t/a.out-$@ t/$@.c ntscore.c $(LDFLAGS) ) \
 	  && ( $(VALGRIND) t/a.out-$@ );
 
 vcheck:
