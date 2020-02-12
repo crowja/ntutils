@@ -26,7 +26,7 @@ _align_score(unsigned type, size_t lena, char *a, size_t lenb, char *b, double i
    double     *wrk2 = wrk + mp1;
 
    for (i = 0; i < mp1; i++)
-      wrk1[i] = wrk2[i] = 0;
+      wrk1[i] = wrk2[i] = 0;                     /* TODO mod to accomodate nonzero gap penalty */
 
    for (j = 1; j < np1; j++) {
       for (i = 1; i < mp1; i++) {
@@ -55,23 +55,21 @@ _align_score(unsigned type, size_t lena, char *a, size_t lenb, char *b, double i
 }
 
 double
-ntalign_local(size_t lena, char *a, size_t lenb, char *b, double indel, double mismatch,
-              double *wrk)
+ntalign_local_score(size_t lena, char *a, size_t lenb, char *b, double indel,
+                    double mismatch, double *wrk)
 {
    if (lena < lenb)
       return _align_score(0, lena, a, lenb, b, indel, mismatch, wrk);
-
    else
       return _align_score(0, lenb, b, lena, a, indel, mismatch, wrk);
 }
 
 double
-ntalign_global(size_t lena, char *a, size_t lenb, char *b, double indel, double mismatch,
-               double *wrk)
+ntalign_global_score(size_t lena, char *a, size_t lenb, char *b, double indel,
+                     double mismatch, double *wrk)
 {
    if (lena < lenb)
       return _align_score(1, lena, a, lenb, b, indel, mismatch, wrk);
-
    else
       return _align_score(1, lenb, b, lena, a, indel, mismatch, wrk);
 }
