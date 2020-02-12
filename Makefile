@@ -20,7 +20,7 @@ INDENT_FLAGS = -TFILE -Tsize_t -Tuint8_t
 TESTS = t/test-revcomp
 EXAMPLES = ex/ex_1
 
-check: test-revcomp test-tidy test-match
+check: test-revcomp test-tidy test-match test-align
 
 test-revcomp:
 	( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
@@ -35,6 +35,11 @@ test-tidy:
 test-match:
 	( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
 	  -o t/a.out-$@ t/$@.c ntmatch.c $(LDFLAGS) ) \
+	  && ( $(VALGRIND) t/a.out-$@ );
+
+test-align:
+	( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+	  -o t/a.out-$@ t/$@.c ntalign.c ntmatch.c $(LDFLAGS) ) \
 	  && ( $(VALGRIND) t/a.out-$@ );
 
 vcheck:
@@ -68,6 +73,8 @@ echeck:
 	done 
 
 indent:
+	@indent $(INDENT_FLAGS) ntalign.c
+	@indent $(INDENT_FLAGS) ntalign.h
 	@indent $(INDENT_FLAGS) ntmatch.c
 	@indent $(INDENT_FLAGS) ntmatch.h
 	@indent $(INDENT_FLAGS) ntrevcomp.c
