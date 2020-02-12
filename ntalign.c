@@ -1,8 +1,6 @@
 #include <stdlib.h>
-#include <stdio.h>                               /* FIXME */
 #include <math.h>
 #include <float.h>
-#include <ctype.h>
 #include "ntmatch.h"
 #include "ntalign.h"
 
