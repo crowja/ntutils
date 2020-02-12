@@ -1,7 +1,7 @@
-#include "ntscore.h"
+#include "ntmatch.h"
 
 double
-ntscore(char b1, char b2, double penalty)
+ntmatch(char b1, char b2, double penalty)
 {
    double      s;
 
@@ -73,6 +73,7 @@ ntscore(char b1, char b2, double penalty)
                s = (1 - 3 * penalty) / (double) 4;
                break;
          }
+         break;
       case 'C':
       case 'c':
          switch (b2) {
@@ -140,6 +141,7 @@ ntscore(char b1, char b2, double penalty)
                s = (1 - 3 * penalty) / (double) 4;
                break;
          }
+         break;
       case 'G':
       case 'g':
          switch (b2) {
@@ -207,6 +209,7 @@ ntscore(char b1, char b2, double penalty)
                s = (1 - 3 * penalty) / (double) 4;
                break;
          }
+         break;
       case 'T':
       case 't':
       case 'U':
@@ -276,6 +279,7 @@ ntscore(char b1, char b2, double penalty)
                s = (1 - 3 * penalty) / (double) 4;
                break;
          }
+         break;
       case 'R':
       case 'r':
          switch (b2) {
@@ -343,6 +347,7 @@ ntscore(char b1, char b2, double penalty)
                s = (2 - 6 * penalty) / (double) 8;
                break;
          }
+         break;
       case 'Y':
       case 'y':
          switch (b2) {
@@ -410,6 +415,7 @@ ntscore(char b1, char b2, double penalty)
                s = (2 - 6 * penalty) / (double) 8;
                break;
          }
+         break;
       case 'S':
       case 's':
          switch (b2) {
@@ -477,6 +483,7 @@ ntscore(char b1, char b2, double penalty)
                s = (2 - 6 * penalty) / (double) 8;
                break;
          }
+         break;
       case 'W':
       case 'w':
          switch (b2) {
@@ -544,6 +551,7 @@ ntscore(char b1, char b2, double penalty)
                s = (2 - 6 * penalty) / (double) 8;
                break;
          }
+         break;
       case 'K':
       case 'k':
          switch (b2) {
@@ -611,6 +619,7 @@ ntscore(char b1, char b2, double penalty)
                s = (2 - 6 * penalty) / (double) 8;
                break;
          }
+         break;
       case 'M':
       case 'm':
          switch (b2) {
@@ -678,6 +687,7 @@ ntscore(char b1, char b2, double penalty)
                s = (2 - 6 * penalty) / (double) 8;
                break;
          }
+         break;
       case 'B':
       case 'b':
          switch (b2) {
@@ -745,6 +755,7 @@ ntscore(char b1, char b2, double penalty)
                s = (3 - 9 * penalty) / (double) 12;
                break;
          }
+         break;
       case 'V':
       case 'v':
          switch (b2) {
@@ -812,6 +823,7 @@ ntscore(char b1, char b2, double penalty)
                s = (3 - 9 * penalty) / (double) 12;
                break;
          }
+         break;
       case 'D':
       case 'd':
          switch (b2) {
@@ -879,6 +891,7 @@ ntscore(char b1, char b2, double penalty)
                s = (3 - 9 * penalty) / (double) 12;
                break;
          }
+         break;
       case 'H':
       case 'h':
          switch (b2) {
@@ -946,6 +959,7 @@ ntscore(char b1, char b2, double penalty)
                s = (3 - 9 * penalty) / (double) 12;
                break;
          }
+         break;
       case 'N':
       case 'n':
       default:
@@ -1014,6 +1028,8 @@ ntscore(char b1, char b2, double penalty)
                s = (4 - 12 * penalty) / (double) 16;
                break;
          }
+         break;
    }
+
    return s;
 }
