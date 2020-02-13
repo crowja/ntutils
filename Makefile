@@ -85,8 +85,14 @@ indent:
 	@indent $(INDENT_FLAGS) t/test-tidy.c
 
 stamp:
+	@stamper.bash ntalign.c
+	@stamper.bash ntalign.h
+	@stamper.bash ntmatch.c
+	@stamper.bash ntmatch.h
 	@stamper.bash ntrevcomp.c
 	@stamper.bash ntrevcomp.h
+	@stamper.bash nttidy.c
+	@stamper.bash nttidy.h
 
 clean:
 	@/bin/rm -f *.o *~ *.BAK *.bak core.* a.out
