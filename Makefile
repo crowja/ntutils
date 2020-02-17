@@ -12,6 +12,7 @@ LDFLAGS_EFENCE = -L/usr/lib -lefence $(LDFLAGS)
 VALGRIND_FLAGS = --leak-check=full --undef-value-errors=yes
 ##VALGRIND = 
 VALGRIND = valgrind $(VALGRIND_FLAGS)
+STAMPER = stamper
 
 INDENT_FLAGS = -TFILE -Tsize_t -Tuint8_t
 
@@ -42,36 +43,6 @@ test-align:
 	  -o t/a.out-$@ t/$@.c ntalign.c ntmatch.c $(LDFLAGS) ) \
 	  && ( $(VALGRIND) t/a.out-$@ );
 
-vcheck:
-	@for i in $(TESTS); \
-	do \
-	  echo "--------------------"; \
-	  echo "Running test $$i"; \
-	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
-		-o t/a.out $$i.c ntutils.c $(LDFLAGS) ) \
-	  && ( valgrind $(VALGRIND_FLAGS) t/a.out ); \
-	done 
-
-scheck:
-	@for i in $(TESTS); \
-	do \
-	  echo "--------------------"; \
-	  echo "Running test $$i"; \
-	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(GCC_SANITIZE_FLAGS) $(OTHER_SOURCE) \
-		-o t/a.out $$i.c ntutils.c $(LDFLAGS) ) \
-	  && ( t/a.out ); \
-	done 
-
-echeck:
-	@for i in $(TESTS); \
-	do \
-	  echo "--------------------"; \
-	  echo "Running test $$i"; \
-	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
-		-o t/a.out $$i.c ntutils.c $(LDFLAGS_EFENCE) ) \
-	  && ( LD_PRELOAD=libefence.so t/a.out ) ; \
-	done 
-
 indent:
 	@indent $(INDENT_FLAGS) ntalign.c
 	@indent $(INDENT_FLAGS) ntalign.h
@@ -85,14 +56,14 @@ indent:
 	@indent $(INDENT_FLAGS) t/test-tidy.c
 
 stamp:
-	@stamper.bash ntalign.c
-	@stamper.bash ntalign.h
-	@stamper.bash ntmatch.c
-	@stamper.bash ntmatch.h
-	@stamper.bash ntrevcomp.c
-	@stamper.bash ntrevcomp.h
-	@stamper.bash nttidy.c
-	@stamper.bash nttidy.h
+	@$(STAMPER) ntalign.c
+	@$(STAMPER) ntalign.h
+	@$(STAMPER) ntmatch.c
+	@$(STAMPER) ntmatch.h
+	@$(STAMPER) ntrevcomp.c
+	@$(STAMPER) ntrevcomp.h
+	@$(STAMPER) nttidy.c
+	@$(STAMPER) nttidy.h
 
 clean:
 	@/bin/rm -f *.o *~ *.BAK *.bak core.* a.out

@@ -1,7 +1,7 @@
 /**
  * @file nttidy.c
  * @version 0.1.1-dev0
- * @date Wed Feb 12 19:43:12 CST 2020
+ * @date Sun Feb 16, 2020 08:09:47 PM CST
  * @copyright 2020 John A. Crow <crowja@gmail.com>
  * @license Unlicense <http://unlicense.org/>
  */
@@ -10,10 +10,10 @@
 #include <ctype.h>
 #include "nttidy.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  IS_NULL
+#undef  IS_NULL
 #endif
-#define _IS_NULL(p)             ((NULL == (p)) ? (1) : (0))
+#define IS_NULL(p)             ((NULL == (p)) ? (1) : (0))
 
 size_t
 nttidy(char *s, int to_case)
@@ -23,7 +23,7 @@ nttidy(char *s, int to_case)
     * (flag > 0), to lowercase (flag < 0), no change (flag == 0).
     */
 
-   if (_IS_NULL(s))
+   if (IS_NULL(s))
       return 0;
 
    else {

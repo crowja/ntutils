@@ -6,31 +6,31 @@
 #include "ntmatch.h"
 #include "tinytest.h"
 
-#ifdef _COLOR_CODE
-#undef _COLOR_CODE
+#ifdef COLOR_CODE
+#undef COLOR_CODE
 #endif
-#define _COLOR_CODE      0x1B
-#ifdef _COLOR_RED
-#undef _COLOR_RED
+#define COLOR_CODE      0x1B
+#ifdef COLOR_RED
+#undef COLOR_RED
 #endif
-#define _COLOR_RED       "[1;31m"
-#ifdef _COLOR_GREEN
-#undef _COLOR_GREEN
+#define COLOR_RED       "[1;31m"
+#ifdef COLOR_GREEN
+#undef COLOR_GREEN
 #endif
-#define _COLOR_GREEN     "[1;32m"
-#ifdef _COLOR_YELLOW
-#undef _COLOR_YELLOW
+#define COLOR_GREEN     "[1;32m"
+#ifdef COLOR_YELLOW
+#undef COLOR_YELLOW
 #endif
-#define _COLOR_YELLOW    "[1;33m"
-#ifdef _COLOR_RESET
-#undef _COLOR_RESET
+#define COLOR_YELLOW    "[1;33m"
+#ifdef COLOR_RESET
+#undef COLOR_RESET
 #endif
-#define _COLOR_RESET     "[0m"
+#define COLOR_RESET     "[0m"
 
 static void
-_printf_test_name(char *name, char *info)
+printf_test_name(char *name, char *info)
 {
-   printf("%c%s%s%c%s", _COLOR_CODE, _COLOR_YELLOW, name, _COLOR_CODE, _COLOR_RESET);
+   printf("%c%s%s%c%s", COLOR_CODE, COLOR_YELLOW, name, COLOR_CODE, COLOR_RESET);
 
    if (NULL != info)
       printf(" [%s]\n", info);
@@ -39,7 +39,7 @@ _printf_test_name(char *name, char *info)
 }
 
 static int
-_two_doubles_equal(double x, double y)
+two_doubles_equal(double x, double y)
 {
    double      t = fabs(x) + fabs(y);
    return fabs(x - y) < 4 * DBL_EPSILON * t ? 1 : 0;
@@ -50,42 +50,42 @@ test_match1(void)
 {
    double s;
 
-   _printf_test_name("test_match1", "ntmatch");
+   printf_test_name("test_match1", "ntmatch");
 
    s = ntmatch('A', 'A', 2.0);
-   ASSERT("A vs A", _two_doubles_equal(1.0, s));
+   ASSERT("A vs A", two_doubles_equal(1.0, s));
    s = ntmatch('a', 'a', 2.0);
-   ASSERT("a vs a", _two_doubles_equal(1.0, s));
+   ASSERT("a vs a", two_doubles_equal(1.0, s));
    s = ntmatch('C', 'C', 2.0);
-   ASSERT("C vs C", _two_doubles_equal(1.0, s));
+   ASSERT("C vs C", two_doubles_equal(1.0, s));
    s = ntmatch('c', 'c', 2.0);
-   ASSERT("c vs c", _two_doubles_equal(1.0, s));
+   ASSERT("c vs c", two_doubles_equal(1.0, s));
    s = ntmatch('G', 'G', 2.0);
-   ASSERT("G vs G", _two_doubles_equal(1.0, s));
+   ASSERT("G vs G", two_doubles_equal(1.0, s));
    s = ntmatch('g', 'g', 2.0);
-   ASSERT("g vs g", _two_doubles_equal(1.0, s));
+   ASSERT("g vs g", two_doubles_equal(1.0, s));
    s = ntmatch('T', 'T', 2.0);
-   ASSERT("T vs T", _two_doubles_equal(1.0, s));
+   ASSERT("T vs T", two_doubles_equal(1.0, s));
    s = ntmatch('t', 't', 2.0);
-   ASSERT("t vs t", _two_doubles_equal(1.0, s));
+   ASSERT("t vs t", two_doubles_equal(1.0, s));
    s = ntmatch('A', 'T', 2.0);
-   ASSERT("A vs T", _two_doubles_equal(-2.0, s));
+   ASSERT("A vs T", two_doubles_equal(-2.0, s));
    s = ntmatch('t', 'a', 2.0);
-   ASSERT("t vs a", _two_doubles_equal(-2.0, s));
+   ASSERT("t vs a", two_doubles_equal(-2.0, s));
    s = ntmatch('g', 'C', 2.0);
-   ASSERT("g vs C", _two_doubles_equal(-2.0, s));
+   ASSERT("g vs C", two_doubles_equal(-2.0, s));
    s = ntmatch('C', 'g', 2.0);
-   ASSERT("C vs g", _two_doubles_equal(-2.0, s));
+   ASSERT("C vs g", two_doubles_equal(-2.0, s));
 
    s = ntmatch('a', 'n', 2.0);
-   ASSERT("a vs n", _two_doubles_equal(-1.25, s));
+   ASSERT("a vs n", two_doubles_equal(-1.25, s));
    s = ntmatch('n', 't', 2.0);
-   ASSERT("n vs t", _two_doubles_equal(-1.25, s));
+   ASSERT("n vs t", two_doubles_equal(-1.25, s));
 
    s = ntmatch('m', 'w', 2.0);
-   ASSERT("m vs w", _two_doubles_equal(-1.25, s));
+   ASSERT("m vs w", two_doubles_equal(-1.25, s));
    s = ntmatch('n', 'n', 2.0);
-   ASSERT("n vs n", _two_doubles_equal(-1.25, s));
+   ASSERT("n vs n", two_doubles_equal(-1.25, s));
 
 }
 
@@ -93,8 +93,8 @@ test_match1(void)
 static void
 test_stub(void)
 {
-   ASSERT("test 1 in test_stub", _two_doubles_equal(0.0, 0.0));
-   _printf_test_name("test_stub", NULL);
+   ASSERT("test 1 in test_stub", two_doubles_equal(0.0, 0.0));
+   printf_test_name("test_stub", NULL);
    ASSERT_EQUALS(0, 0);
 }
 
