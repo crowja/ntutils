@@ -11,7 +11,7 @@
 double
 ntmatch(char b1, char b2, double penalty)
 {
-   double      s;
+   double    s;
 
    switch (b1) {
       case 'A':

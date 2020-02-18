@@ -22,22 +22,22 @@ _align_score(unsigned type, size_t lena, char *a, size_t lenb, char *b, double i
              double mismatch, double *wrk)
 {
    /* Computes best score only for global (type = 0) and local (type = 1) alignments */
-   unsigned    i, j;
-   unsigned    mp1 = lena + 1;
-   unsigned    np1 = lenb + 1;
-   double      score = -DBL_MAX;
-   double      maxscore = (lena < lenb ? lena : lenb);  /* maximum possible score */
-   double      tol = DBL_EPSILON;
-   double     *wrk1 = wrk;                  /* needs to be at least 2 * m + 2 doubles */
-   double     *wrk2 = wrk + mp1;
+   unsigned  i, j;
+   unsigned  mp1 = lena + 1;
+   unsigned  np1 = lenb + 1;
+   double    score = -DBL_MAX;
+   double    maxscore = (lena < lenb ? lena : lenb);    /* maximum possible score */
+   double    tol = DBL_EPSILON;
+   double   *wrk1 = wrk;                    /* needs to be at least 2 * m + 2 doubles */
+   double   *wrk2 = wrk + mp1;
 
    for (i = 0; i < mp1; i++)
       wrk1[i] = wrk2[i] = 0;                     /* TODO mod to accomodate nonzero gap penalty */
 
    for (j = 1; j < np1; j++) {
       for (i = 1; i < mp1; i++) {
-         double      s0, s1;
-         double      w = ntmatch(a[i - 1], b[j - 1], mismatch);
+         double    s0, s1;
+         double    w = ntmatch(a[i - 1], b[j - 1], mismatch);
 
          s0 = wrk1[i - 1] + w;                   /* score without indels */
          s1 = (wrk1[i] > wrk2[i - 1] ? wrk1[i] : wrk2[i - 1]) - indel;  /* score with indels */

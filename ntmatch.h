@@ -9,6 +9,6 @@
 #ifndef NTMATCH_H
 #define NTMATCH_H
 
-double      ntmatch(char b1, char b2, double penalty);
+double    ntmatch(char b1, char b2, double penalty);
 
 #endif

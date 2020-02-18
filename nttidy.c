@@ -27,8 +27,8 @@ nttidy(char *s, int to_case)
       return 0;
 
    else {
-      size_t      i = 0;
-      char       *cp = s;
+      size_t    i = 0;
+      char     *cp = s;
 
       for (; *cp != '\0'; cp++) {
 

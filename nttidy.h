@@ -9,6 +9,6 @@
 #ifndef NTTIDY_H
 #define NTTIDY_H
 
-size_t      nttidy(char *s, int to_case);
+size_t    nttidy(char *s, int to_case);
 
 #endif

@@ -9,6 +9,6 @@
 #ifndef NTREVCOMP_H
 #define NTREVCOMP_H
 
-size_t      ntrevcomp(char *s, int is_rna);
+size_t    ntrevcomp(char *s, int is_rna);
 
 #endif

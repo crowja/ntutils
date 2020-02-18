@@ -24,11 +24,11 @@ ntrevcomp(char *s, int is_rna)
     * except '>' and '<' which  get flipped. Returns length of s.
     */
 
-   size_t      len = 0;
+   size_t    len = 0;
 
    if (!IS_NULL(s)) {
-      unsigned    i;
-      char       *cp = s;
+      unsigned  i;
+      char     *cp = s;
       for (; *cp != '\0'; len++, cp++)
          switch (*cp) {
             case 'A':
@@ -142,7 +142,7 @@ ntrevcomp(char *s, int is_rna)
          }
 
       for (i = 0; i < len / 2; i++) {
-         char        t = s[i];
+         char      t = s[i];
          s[i] = s[len - i - 1];
          s[len - i - 1] = t;
       }
